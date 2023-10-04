@@ -18,16 +18,16 @@ session = Session(engine)
 
 result = session.query(Orders, OrdersItem).filter(Orders.id == OrdersItem.orders_id).all()
 for row in result:
-    print(row.__dict__)
+    print(row[0].__dict__,row[1].__dict__)
 
-for row in result:
-    print('\t|\t'.join( (str(row.id),  str(row.name) , str(row.price))))
-
-result = session.query(Orders).all()
-for row in result:
-    print(row.__dict__)
-
-result = (session
-          .query(Orders, FoodItem).all())
-for row in result:
-    print(row.__dict__)
+# for row in result:
+#     print('\t|\t'.join( (str(row[0].id),  str(row[1].name) , str(row[1].price))))
+#
+# result = session.query(Orders).all()
+# for row in result:
+#     print(row.__dict__)
+#
+# result = (session
+#           .query(Orders, FoodItem).all())
+# for row in result:
+#     print(row.__dict__)

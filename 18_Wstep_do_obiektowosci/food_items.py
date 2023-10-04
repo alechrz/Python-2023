@@ -20,3 +20,24 @@ with open('foods.csv') as csvfile:
         food_list.append(FoodItem(item_id=row['Food ID'], item_name=row['Food Item'], price=row['Price']))
 
 pprint(food_list)
+
+import csv
+
+
+class FoodItem:
+    def __init__(self, id, name, price):
+        self.id = id
+        self.name = name
+        self.price = price
+
+    def __repr__(self):
+        return f'FoodItem({self.id}, "{self.name}", {self.price})'
+
+
+food_items = []
+
+with open('foods.csv') as csvfile:
+    reader = csv.DictReader(csvfile)
+    for row in reader:
+        item = FoodItem(**row)
+        print(item)
